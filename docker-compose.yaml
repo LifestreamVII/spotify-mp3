@@ -1,0 +1,29 @@
+version: "3.3"
+
+networks:
+  default:
+    external:
+      name: localdev
+
+services:
+  redis:
+    image: "redis"
+    container_name: 'redis-server'
+    hostname: redis
+    ports:
+      - "6379:6379"
+  mp3download:
+    restart: on-failure
+    depends_on:
+      - redis
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mp3download:latest
+    container_name: 'mp3download'
+    volumes:
+      - ./data:/usr/src/music/data
+      - ./scripts:/usr/src/music/app
+    entrypoint: /usr/src/music/app/init.sh
+    ports:
+      - 5000:5000
