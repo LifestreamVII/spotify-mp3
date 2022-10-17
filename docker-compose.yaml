@@ -1,9 +1,12 @@
-version: "3.3"
+version: "3.8"
 
 networks:
   default:
-    external:
-      name: localdev
+     name: Net
+     driver: bridge
+     ipam:
+      config:
+        - subnet: 192.168.0.0/16
 
 services:
   redis:
@@ -13,7 +16,7 @@ services:
     ports:
       - "6379:6379"
   mp3download:
-    restart: on-failure
+    restart: always
     depends_on:
       - redis
     build:
@@ -26,4 +29,4 @@ services:
       - ./scripts:/usr/src/music/app
     entrypoint: /usr/src/music/app/init.sh
     ports:
-      - 5000:5000
+      - 31521:5000
