@@ -29,7 +29,7 @@
 
 `sudo docker-compose up -d --build`
 
-Server hosted at localhost:5000
+Server hosted at localhost:31521
 
 <br>
 
