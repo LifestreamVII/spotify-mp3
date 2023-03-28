@@ -18,9 +18,9 @@
 - <b>✅ Spotify Link as input (currently needs a Deezer ID)</b>
 - <b>🔄 Integrate Spotify functionalities (track/album/playlist/artist links)</b>
 - <b>🔄 Graphics / Visual Presentation</b>
-- <b>Error Management and Optimization</b>
+- <b>🔄Error Management and Optimization</b>
 - <b>User Options</b>
-- <b>Migration to Node/Express Server</b>
+- <b>🔄Migration to Node/Express Server</b>
 - <b>Integration to the future Stellar Project</b>
 
 <br>
