@@ -11,9 +11,9 @@ RUN python3 -m pip install deemix
 
 RUN python3 -m pip install flask
 #RUN python3 -m pip install gunicorn
-RUN pip install --upgrade pip
-RUN pip install celery
-RUN pip install redis
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install celery
+RUN python3 -m pip install redis
 RUN apk add supervisor
 RUN mkdir -p /usr/src/music/app
 #ADD ./scripts/mp3api.py /usr/src/music/app/app.py

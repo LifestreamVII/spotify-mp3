@@ -1,5 +1,5 @@
 # mp3api.py
-from flask import Flask, request, jsonify, url_for, render_template
+from flask import Flask, request, jsonify, url_for
 from celery import Celery
 import subprocess
 import json
@@ -13,23 +13,6 @@ app.config['CELERY_RESULT_BACKEND'] = 'redis://redis:6379/0'
 
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 celery.conf.update(app.config)
-
-
-# a simple description of the API written in html.
-# Flask can print and return raw text to the browser. 
-# This enables html, json, etc. 
-
-description =   """
-                <!DOCTYPE html>
-                <head>
-                <title>Spotify Playlist Downloader</title>
-                </head>
-                <body>  
-                    <h3>Spotify Playlist Downloader</h3>
-		    <p>This API uses deezweb-py to export Spotify tracks to MP3 files</p>
-                </body>
-                """
-				
 
 @celery.task(bind=True)
 def long_task(self, url):
@@ -49,23 +32,11 @@ def long_task(self, url):
     return {'current': 100, 'total': 100, 'status': 'Task completed!',
             'result': 42}
 
-
-# Routes refer to url'
-# our root url '/' will show our html description
-@app.route('/', methods=['GET'])
-def introduction():
-    # return a html format string that is rendered in the browser
-	return render_template("index.html");
-
-# our '/api' url
 # requires user integer argument: value
 # returns error message if wrong arguments are passed.
 @app.route('/api', methods=['GET', 'POST'])
 def square():
     if not all(k in request.args for k in (["value"])):
-        # we can also print dynamically 
-        # using python f strings and with 
-        # html elements such as line breaks (<br>)
         error_message =     f"\
                             Required paremeters : 'value'<br>\
                             Supplied paremeters : {[k for k in request.args]}\
@@ -74,8 +45,7 @@ def square():
     else:
         url = request.args.get('value')
         task = long_task.apply_async(args=[url])
-        return jsonify(), 202, {'Location': url_for('taskstatus',
-                                                  task_id=task.id)}
+        return jsonify(statusUrl=url_for('taskstatus', task_id=task.id)), 202
 
 @app.route('/status/<task_id>')
 def taskstatus(task_id):
@@ -116,8 +86,6 @@ def taskstatus(task_id):
     return jsonify(response)
 
 if __name__ == "__main__":
-	# for debugging locally
-	app.run(debug=True, host='0.0.0.0',port=5000)
-	
-	# for production
-	#app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0',port=5000)
+	# for debug
+	#app.run(debug=True, host='0.0.0.0', port=5000)
