@@ -1,6 +1,6 @@
 {
   "downloadLocation": "/usr/src/music/data",
-  "tracknameTemplate": "%artist% - %title%",
+  "tracknameTemplate": "%track_id%_dl",
   "albumTracknameTemplate": "%tracknumber% - %title%",
   "playlistTracknameTemplate": "%position% - %artist% - %title%",
   "createPlaylistFolder": true,
