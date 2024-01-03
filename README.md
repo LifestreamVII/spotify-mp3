@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="[https://i.imgur.com/rSC3xdc.jpeg](https://i.imgur.com/2s2ezV5.png)" alt="Project header"></a>
+ <img src="https://i.imgur.com/2s2ezV5.png" width="70%" alt="Project header"></a>
 </p>
 <h1 align="center">Spotify MP3 Grabber (experiments)</h1>
 
