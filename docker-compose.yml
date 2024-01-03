@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  redis:
+    restart: always
+    image: "redis"
+    container_name: 'redis-server'
+    hostname: redis
+    ports:
+      - "3060:6379"
+    networks:
+      - stellardl
+
+  stellardl_api:
+    restart: always
+    depends_on:
+      - redis
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/usr/src/music/data
+      - ./api/scripts:/usr/src/music/app
+    entrypoint: /usr/src/music/app/init.sh
+    ports:
+      - 3070:5000
+    hostname: mp3api
+    networks:
+      - stellardl
+
+  stellardl_front:
+    restart: always
+    depends_on:
+      - stellardl_middle
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - 3020:3000
+    volumes: 
+      - ./front:/app
+      # this will mount the node_modules folder for faster performance 
+      - nodemodules:/app/node_modules
+    hostname: react
+    networks:
+      - stellardl
+
+  stellardl_middle:
+    restart: always
+    build:
+      context: ./middle
+      dockerfile: Dockerfile
+    ports:
+      - 3030:8800
+    volumes:
+      - ./middle:/server
+    working_dir: /server
+    #command: node app
+    hostname: middle
+    networks:
+      - stellardl
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
+
+networks:
+  stellardl:
+     driver: bridge
+     ipam:
+      config:
+        - subnet: 10.0.0.1/16
+
+volumes:
+  nodemodules:

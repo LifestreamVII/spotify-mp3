@@ -1,0 +1,118 @@
+.loading{
+    border: solid 2px #ffffff2b;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.loading .inner p {
+    color: #4a91ff;
+    letter-spacing: 0.6em;
+    font-weight: bold;
+    font-size: 1.05em;
+    text-align: center;
+    text-shadow: 2px 1px 10px #367bff;
+    text-transform: uppercase full-width;
+    font-family: sans-serif;
+    line-height: 0%;
+}
+
+
+.loading .inner {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 20px;
+    border: solid 1px #bdbdbd38;
+    margin: 4px;
+    background: #243c51bf;
+    border-radius: 5px;
+    position: relative;
+    flex-flow: row wrap;
+  }
+
+.loading .inner .scanlines{
+    z-index: 0;
+    opacity: 1;
+}
+
+.loading .spinner-cont{
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+}
+
+.loading .spinner{
+    -webkit-animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite;
+    width: 100%;
+    height: 100%;
+}
+
+.loading .spinner .path {
+    stroke: #93bfec;
+    stroke-linecap: round;
+    -webkit-animation: dash 1.5s ease-in-out infinite;
+            animation: dash 1.5s ease-in-out infinite;
+}
+
+.loading .inner.error p{
+    color: #ff4a4a;
+    text-shadow: 2px 1px 10px #ff3636;
+}
+
+.loading .inner.error{
+    background: #512424bf;
+}
+
+.loading .inner.notice{
+    background: #24513ebf;
+}
+
+.loading .inner.notice p{
+    color: #4affab;
+    background: #24513ebf;
+}
+
+@-webkit-keyframes rotate {
+100% {
+    transform: rotate(360deg);
+}
+}
+
+@keyframes rotate {
+100% {
+    transform: rotate(360deg);
+}
+}
+@-webkit-keyframes dash {
+0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+}
+50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+}
+100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+}
+}
+@keyframes dash {
+0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+}
+50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+}
+100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+}
+}

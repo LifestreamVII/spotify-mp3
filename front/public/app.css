@@ -1,0 +1,96 @@
+body{
+    background: rgb(34,34,34);
+    background: linear-gradient(41deg, rgba(34,34,34,1) 70%, rgba(10,10,10,1) 70% 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.server-status{
+    width: 100%;
+    gap: 50px;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-around;
+}
+
+.server-status-cont{
+    border: solid 2px red;
+    border-radius: 12px;
+    width: fit-content;
+    padding: 10px 20px;
+}
+
+.server-status > .status {
+    margin-top: 5px;
+}
+
+.server-status > .status > span {
+    color: white;
+    display: block;
+}
+
+.server-status .checkmark{
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.checkmark > i{
+    margin: 25%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.downloader{
+    padding: 10px;
+    margin-right: auto;
+    text-align: left;
+    border: solid 2px red;
+}
+
+.linkinput-cont{
+    margin-right: auto;
+    margin-left: 2%;
+    max-width: 90vw;
+    border-radius: 8px;
+    background-color: gray;
+    border: solid 2px blue;
+}
+
+.linkinput > input{
+    border-radius: 2em;
+    width: 90%;
+    max-height: 40px;
+    padding: 2%;
+    border: solid 2px #FFFFFF1B;
+    background-color: #FFFFFF5B;
+}
+
+.logo{
+    margin: 15px 0;
+}
+
+.logo span{
+    margin: none;
+    display: block;
+}
+.logo span:nth-of-type(1){
+    font-size: 2em;
+    line-height: 30px;
+    font-weight: bold;
+}
+.logo span:nth-of-type(2){
+    padding-left: 4px;
+}
+
+.linktype{
+    margin: 10px 0;
+}
+
+.result-list{
+    margin: 10px 0;
+}

@@ -1,0 +1,170 @@
+.scanlines {
+  position: absolute;
+  pointer-events: none;
+  opacity:0.5;
+  top: 0;
+  border-radius: 10px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+  background: url(https://al1-ce.dev/assets/images/scanlines.png) repeat;
+  animation: scan 2s linear infinite;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+
+@keyframes scan {
+  from { background-position: 0 0; }
+  to { background-position: 0 -30px; }
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  height: 120px;
+  margin: 10px 0;
+  border: solid 1.5px white;
+  border-radius: 10px;
+  background: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  background-size: 100% auto, cover!important;
+  background-repeat: no-repeat!important;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.result-cover {
+  transition: transform 0.52s ease-in-out;
+  border: 1px solid #ccc;
+  border-radius: 5px;    
+  height: 85%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.result-cover > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.result-data {
+  width: 80%;
+  transition: margin 0.3s ease-in-out;
+}
+
+.result-name > span{
+  color: #e7e7e7;
+  font-family: 'Prompt', sans-serif;
+  letter-spacing: -0.07em;
+  font-size:31px;
+  text-shadow: 1px 1px 3px #999;
+  margin: 0;
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 2px 2px 12px #00000069;
+}
+
+.result-name{
+  overflow: hidden;
+  max-width: 90%;
+  text-overflow: ellipsis;
+}
+
+.result-artist > span {
+  color: #ffffff89;
+  font-family: 'Prompt', sans-serif;
+  text-shadow: 1px 1px 3px #999;
+  font-size:15px;
+  margin: 0;
+  font-weight: 300;
+}
+.tag {
+  /* existing styles */
+  position: relative;
+  /* overflow: hidden; */
+
+}
+iframe{display: none;}
+
+.tag-overlay-wrapper{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.tag-overlay {
+  background-size: 100% auto, cover!important;
+  background-repeat: no-repeat!important;
+  transition: left 4s ease-out, opacity 0.52s ease-in-out, transform 4s ease-out, filter 3s linear;
+  position: relative;
+  top: 0;
+  opacity: 0.6;
+  left: 0;
+  box-shadow: inset #000000b8 0px 0px 16px 9px;
+  z-index: -1;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+}
+
+.tag:hover .result-cover{
+  transform: scale(1.3);
+}
+
+.tag:hover .tag-overlay{
+  opacity: 0.9;
+  transform: scale(1.14);
+  filter: blur(4px);
+  left: 15px;
+}
+
+.tag:hover .result-data{
+  margin-left: 1.6%;
+}
+
+.tag:hover .dlButton{
+  opacity: 1;
+  visibility: visible;
+}
+
+.dlButton{
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.24s linear;
+  position: absolute;
+  z-index: 2;
+  left: 32px;
+  top: 30px;
+  cursor: pointer;
+  font-weight: bolder;
+  border: solid 2px white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding-bottom: 4px;
+  background: #ffffff50;
+  font-size: 1.3em;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+
+.history-indicator{
+  padding: 0% 1.2%;
+  font-size: 0.8em!important;
+  background: #5e5e5e;
+  text-align: center;
+  margin-left: 1.2%!important;
+  border-radius: 13px;
+}
